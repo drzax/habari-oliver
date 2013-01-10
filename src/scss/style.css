@@ -1,0 +1,65 @@
+body {
+	font-family: 'Libre Baskerville', serif;
+	margin: 0;
+	display: block;
+    height: 100%;
+    overflow: hidden;
+}
+
+h1 {
+	font-style: italic;
+	font-weight: 400;
+}
+
+p:first-child {
+	margin-top: 0;
+}
+
+blockquote {
+	border-left: 1px dotted #ddd;
+	margin-left: 30px;
+	padding-left: 30px;
+}
+
+.pane {
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	position: absolute;
+}
+
+#main {
+	padding: 0 150px 50px 50px	;
+}
+
+#main > header {
+	border-bottom: 1px dotted #000;
+	padding: 40px 0;
+}
+
+#main > header h1 {
+	margin: 0;
+	float: left;
+}
+
+#main > header h2 {
+	float: right;
+	font-size: 1em;
+	font-weight: 400;
+	color: #ddd;
+}
+
+#main > article > div {
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+}
+#main > article h1 {
+	font-size: 3em;
+}
+
+.pane:nth-child(2) {
+	border-left: 1px solid #ddd;
+}
+
