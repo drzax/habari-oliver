@@ -8,6 +8,12 @@
 	<description><![CDATA[A minimalist theme for Habari.]]></description>
 
 	<copyright>2013</copyright>
+
+	<areas>
+		<area name="nav">
+			<description><![CDATA[A very small navigation area.]]></description>
+		</area>
+	</areas>
 	
 	<template_engine>rawphpengine</template_engine>
 	

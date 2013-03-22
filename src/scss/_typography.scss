@@ -1,0 +1,49 @@
+
+body {
+	font-family: 'Sorts Mill Goudy', serif;
+	color: $font-color;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+}
+
+a {
+	@include transition(color .3s ease-out, border-color .3s ease-out);
+	@include link-colors($font-color, $highlight-color, $highlight-color, $font-color, $highlight-color);
+}
+
+h1 {
+	@include adjust-font-size-to(40px);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	font-style: italic;
+}
+
+article {
+	header {
+		h1 {
+			a {
+				border-bottom: none;
+			}
+		}
+	}
+}
+
+
+
+blockquote {
+	border-left: 1px dotted #ddd;
+	margin-left: 1em;
+	padding-left: 1em;
+}
+
+code {
+	font-size: .78em;
+	background: #f7f7f9;
+	border: 1px solid #e1e1e8;
+	white-space: nowrap;
+	@include border-radius(.2em);
+	padding: .1em .3em;
+}
