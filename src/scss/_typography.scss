@@ -1,3 +1,5 @@
+$link-color: $font-color;
+
 
 body {
 	font-family: 'Sorts Mill Goudy', serif;
@@ -7,8 +9,13 @@ body {
 }
 
 a {
-	@include transition(color .3s ease-out, border-color .3s ease-out);
-	@include link-colors($font-color, $highlight-color, $highlight-color, $font-color, $highlight-color);
+	@include transition(color .3s ease-out, box-shadow .3s ease-out);
+	@include link-colors($link-color, $highlight-color, $highlight-color, $link-color, $highlight-color);
+	text-decoration: none;
+	@include box-shadow(0 -0.15em 0 rgba(255, 255, 255, 0.9) inset, 0 -0.18em 0 scale-color($lowlight-color, $lightness: 70%) inset);
+	&:hover {
+		@include box-shadow(0 -0.15em 0 rgba(255, 255, 255, 0.9) inset, 0 -0.18em 0 scale-color($highlight-color, $lightness: 10%) inset);
+	}
 }
 
 h1 {
