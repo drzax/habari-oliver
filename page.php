@@ -1,6 +1,6 @@
 <article id="post-<?php echo $post->id; ?>" class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<header>
-		<h1 itemprop="name"><a href="<?php echo $post->permalink; ?>" itemprop="url"><?php echo $post->title_out; ?></a></h1>
+		<h1 itemprop="name"><?php echo $post->title_out; ?></h1>
 	</header>
 	<div class="content" itemprop="articleBody">
 	<?php echo $post->content_out; ?>
@@ -13,6 +13,8 @@
 			</time>
 			&mdash;
 			<span itemprop="author" rel="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><?php echo $post->author->displayname; ?></span></span>
+			&mdash;
+			<a href="<?php echo $post->permalink; ?>" itemprop="url">Permalink</a>
 		</div>
 	</footer>
 </article>

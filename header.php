@@ -16,9 +16,11 @@
 				<h2 itemprop="description"><?php echo Options::get('tagline'); ?></h2>
 			</hgroup>
 		</a>
-		<nav>
-			<?php echo $theme->area('nav'); ?>
-		</nav>
 		
 	</header>
+	
+	<nav role="main">
+		<?php echo $theme->area('nav'); ?>
+	</nav>
+	
 	<?php // Session::messages_out(); ?>

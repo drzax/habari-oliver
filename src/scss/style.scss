@@ -5,6 +5,7 @@
 @import 'layout';
 
 
+
 /*.pane {
 	height: 100%;
 	width: 100%;
@@ -14,7 +15,6 @@
 	
 header {
 
-	margin: 5em 0 4em 0;
 	padding: 0;
 	position: relative;
 	
@@ -43,67 +43,85 @@ header {
 			font-style: normal;
 		}
 	}
-	
-	&:hover {
-		nav {
-			left: -$page-left-margin;
-		}
-	}
-	
-	nav {
-		position: absolute;
-		top: 0;
-		left: .8em - $page-left-margin*2;
-		height: 100%;
-		width: $page-left-margin - 2.5em;
-		padding: 0 1em;
-		background: $highlight-color;
-		color: #fff;
-		@include transition(left .3s ease-in-out .2s);
-		font-family: 'PT Sans', sans-serif;
-		text-transform: uppercase;
-		
-		a {
-			@include link-colors(#fff, #fff, #fff, #fff, #fff);
-			border-top: 0.25em solid transparent;
-			padding-top: 2.1em;
-			text-decoration: none;
-			font-size: .64em;
-			margin-right: .5em;
-			@include inline-block;
-			line-height: 2.2em;
-			&:hover {
-				border-top-color: #fff;
-			}
-		}
-		
-		ol {
-			margin: 0;
-			padding: 0;
-			display: inline;
-			position: relative;
-			li {
-				display: inline;
-				list-style: none;
-				margin:0;
-				padding: 0;
-			}
-		}
-	}
-	
-	
 
 }
 
-.pubdata,
+
+	
+nav[role=main] {
+	position: fixed;
+	top: 12em;
+	left: 0;
+	max-width: $page-left-margin - 1em;
+	padding: 0;
+	font-family: 'PT Sans', sans-serif;
+	text-transform: uppercase;
+	
+	@media screen and (max-height: $break-height-medium) {
+		top: 5.5em;
+	}
+	
+	@media screen and (max-width: $break-width-medium) {
+		position: relative;
+		top: auto; 
+		left: auto;
+		max-width: auto;
+		margin: 2em 0;
+		float: right;
+	}
+
+	ol {
+		margin: 0; 
+		padding: 0;
+		position: relative;
+		font-size: .6em;
+		line-height: 1.5em;
+
+		li {
+			list-style: none;
+			margin:0;
+			padding: 0 1em;
+			border-left: 0.25em solid transparent;
+			
+			@media screen and (max-width: $break-width-medium) {
+				border: none;
+				padding: 0;
+			}
+			
+			&.active {
+				border-color: $highlight-color;
+				
+			}
+			
+			a {
+				text-decoration: none;
+				@include link-colors($lowlight-color, $highlight-color, $highlight-color, $lowlight-color, $highlight-color);
+			}
+		}
+	}
+}
+
+@mixin meta {
+	text-transform: uppercase;
+	font-size: .7em;
+	font-family: 'PT Sans', sans-serif;
+}
+
+.pubdata {
+	@include meta;
+	color: $lowlight-color;
+	a {
+		@include link-colors($lowlight-color, $highlight-color, $highlight-color, $lowlight-color, $highlight-color);
+		text-decoration: none;
+	}
+}
+
 .pagenav a,
 a[rel=tag] {
-	text-transform: uppercase;
-	border-bottom: none;
-	font-size: .7em;
-	color: $lowlight-color;
-	font-family: 'PT Sans', sans-serif;
+	@include meta;
 	margin-right: .5em;
+	text-decoration: none;
+	@include link-colors($lowlight-color, $highlight-color, $highlight-color, $lowlight-color, $highlight-color);
 }
 
 @mixin post-time {
@@ -114,11 +132,17 @@ a[rel=tag] {
 	text-transform: uppercase;
 	font-family: 'PT Sans', sans-serif;
 	font-size: .6em;
-	bottom: -0.1em;
+	top: 0.1em;
 	color: $lowlight-color;
 }
 
 div.multiple {
+	
+	clear: both;
+	
+	@media screen and (max-width: $break-width-medium) {
+		margin-left: 0;
+	}
 	
 	> ol {
 		margin: 0;
@@ -128,9 +152,31 @@ div.multiple {
 			
 			position: relative;
 			list-style: none;
+			margin-bottom: 0.5em;
+			@include clearfix;
 			
 			time {
 				@include post-time;
+				
+				@media screen and (max-width: $break-width-medium) {
+					left: auto;
+					text-align: left;
+				}
+				
+				@media screen and (max-width: $break-width-small) {
+					position: relative;
+				}
+			}
+			
+			>span {
+				@media screen and (max-width: $break-width-medium) {
+					margin-left: 7em;
+					display: block;
+				}
+				
+				@media screen and (max-width: $break-width-small) {
+					margin-left: 0;
+				}
 			}
 			
 			span.author {
@@ -152,22 +198,37 @@ hr {
 }
 
 .content {
+		
 	.multiple {
 		margin-left: -$page-left-margin;
+	}
+	
+	img {
+		max-width: 100%;
 	}
 }
 
 article {
+	clear: both;
 	max-width: 60em;
 	header {
 		margin: 0;
 		
 		h1 {
 			@include adjust-font-size-to(55px);
-			margin-bottom: 0;
+			line-height: 1em;
+			margin-bottom: .3em;
 			
-			@media all and (max-width: 60em) {
+			@media all and (max-width: $break-width-medium), all and (max-height: $break-height-medium)  {
 				@include adjust-font-size-to(40px);
+				line-height: 1em;
+				margin-bottom: .3em;
+			}
+			
+			@media all and (max-width: $break-width-small){
+				@include adjust-font-size-to(28px);
+				line-height: 1em;
+				margin-bottom: .3em;
 			}
 		}
 		
@@ -182,7 +243,7 @@ article {
 
 ol.footnotes {
 	color: $lowlight-color;
-	@include adjust-font-size-to(12px);
+	@include adjust-font-size-to(14px);
 	line-height: 1.6em;
 	li {
 		/*margin-bottom: .3em;*/
